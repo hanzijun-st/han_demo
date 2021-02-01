@@ -1,50 +1,43 @@
 package com.xjt.model;
 
 public class User {
+    private static final long serialVersionUID = 1L;
+    private Integer id;
+    private String perNum;
+    private String perName;
+    private Integer status;
 
-    private long id;
-    private String email;
-    private String mobile;
-    private String username;
-    private String role;
-
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public String getPerNum() {
+        return perNum;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPerNum(String perNum) {
+        this.perNum = perNum;
     }
 
-    public String getMobile() {
-        return mobile;
+    public String getPerName() {
+        return perName;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setPerName(String perName) {
+        this.perName = perName;
     }
 
-    public String getUsername() {
-        return username;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
-    public String getRole() {
-        return role;
-    }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
 }

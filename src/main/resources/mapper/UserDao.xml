@@ -4,8 +4,40 @@
 <!-- 设置为IUserDao接口方法提供sql语句配置 -->
 <mapper namespace="com.xjt.dao.IUserDao">
 
-    <select id="selectUser" resultType="User" parameterType="long">
-        SELECT * FROM user WHERE id = #{id}
+    <select id="selectList" resultType="User" parameterType="int">
+        SELECT
+            id AS id,
+            per_num AS perNum,
+            per_name AS perName,
+            status
+        FROM han_chouj
+        where status = 0 and per_num !=5739 ORDER BY RAND() LIMIT #{num};
     </select>
 
+    <select id="getOne" resultType="User">
+        SELECT
+        id AS id,
+        per_num AS perNum,
+        per_name AS perName,
+        status
+        FROM han_chouj
+        where per_num =5739
+    </select>
+    <update id="updateStatus">
+        update han_chouj set status=#{status} where id =#{id}
+    </update>
+
+    <select id="getStatus" resultType="User" parameterType="int">
+         SELECT
+            id AS id,
+            per_num AS perNum,
+            per_name AS perName,
+            status
+        FROM han_chouj
+        where status=#{status}
+    </select>
+
+    <update id="del">
+        update han_chouj set status=0
+    </update>
 </mapper>

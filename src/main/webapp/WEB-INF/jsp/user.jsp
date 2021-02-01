@@ -12,9 +12,9 @@
 </head>
 <body>
     id:${requestScope.user.id}<br/>
-    email:${requestScope.user.email}<br/>
-    username:${requestScope.user.username}<br/>
-    role:${requestScope.user.role}<br/>
-    mobile:${requestScope.user.mobile}<br/>
+    perNum:${requestScope.user.perNum}<br/>
+    perName:${requestScope.user.perName}<br/>
+    status:${requestScope.user.status}<br/>
+
 </body>
 </html>

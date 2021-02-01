@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>特等奖</title>
+<link rel="stylesheet" href="css/common.css" />
+</head>
+<style type="text/css">
+.box {
+	width: 100vw;
+	height: 100vh;
+	margin: 0 auto;
+	background: url(img/1.png) no-repeat;
+	background-size: 100vw 100vh;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+}
+
+.pos {
+	position: absolute;
+	top: 36%;
+	left: 35.7%;
+	width: 53%;
+	height: 60%;
+	text-align: center;
+	margin-right: 2%;
+	font-size: 55px;
+}
+
+ul {
+	margin-top: 15%;
+}
+
+li {
+	line-height: 100%;
+	font-size: 1.0em;
+	font-weight: 900;
+	color: #fbd011;
+	line-height:1.5em;
+	margin-right: 3rem;
+}
+.start{
+
+}
+</style>
+<body>
+	<div class="box">
+		<div class="pos">
+			<ul>
+
+			</ul>
+      <div class="start" style="display: none">点击开始</div>
+		</div>
+
+	</div>
+	<script src="js/jquery_1.11.3.min.js"></script>
+  <script src="js/common.js"></script>
+
+  <script>
+    var dataList = [];
+    var winningList = [];
+    var status = -1;
+    var grade = status;
+    var gradeNum = 2;
+    $(function() {
+      loading.showLoading({
+        type:1,
+        tip:"加载中"
+      })
+      query(status,function (data) {
+        if(data && data.length){
+          loading.hideLoading();
+          var html = ''
+          for(var i =0;i<data.length;i++){
+            html += '<li>'+data[i].perName+'(' + data[i].perNum + ')' +'</li>';
+          }
+          $('.pos ul').append(html);
+        }else {
+          getPrize(grade,gradeNum,function (data) {
+            winningList = data;
+            query(0,function(data){
+              loading.hideLoading();
+              dataList = data;
+              if(dataList.length){
+                $('.start').show();
+              }
+            });
+          })
+        }
+      })
+
+    });
+    $('.pos').on('click','.start',function(){
+      luckDraw(dataList,winningList,0);
+    })
+  </script>
+</body>
+</html>
+
+
