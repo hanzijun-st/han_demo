@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>五等奖(2)</title>
+<meta charset="gbk">
+<title>五等奖</title>
 <link rel="stylesheet" href="css/common.css" />
 </head>
 <style type="text/css">
@@ -73,22 +73,19 @@ li {
           }
           $('.pos ul').append(html);
         }else {
-          getPrize(grade,gradeNum,function (data) {
-            winningList = data;
-            query(0,function(data){
-              loading.hideLoading();
-              dataList = data;
-              if(dataList.length){
-                $('.start').show();
-              }
-            });
-          })
+          query(0,function(data){
+            loading.hideLoading();
+            dataList = data;
+            if(dataList.length){
+              $('.start').show();
+            }
+          });
         }
       })
 
     });
     $('.pos').on('click','.start',function(){
-      luckDraw(dataList,winningList,0);
+      luckDraw(dataList,grade,gradeNum);
     })
   </script>
 </body>
