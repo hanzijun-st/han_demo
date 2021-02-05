@@ -25,7 +25,7 @@ public class UserServiceImpl implements IUserService {
         if (grade.intValue() ==1){
             resultList.addAll(userDao.selectList(num-1));
             resultList.add(userDao.getOne());
-            resultList.sort(Comparator.comparing(User::getId).thenComparing(User::getId));
+            resultList.sort(Comparator.comparing(User::getId).thenComparing(User::getPerName));
         }else{
             resultList.addAll(userDao.selectList(num));
         }
@@ -53,5 +53,11 @@ public class UserServiceImpl implements IUserService {
     public Integer del() {
         userDao.del();
         return 200;
+    }
+
+    @Override
+    public List<User> getAll() {
+        List<User> allList = userDao.getAll();
+        return allList;
     }
 }

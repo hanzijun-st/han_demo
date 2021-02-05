@@ -25,4 +25,10 @@ public interface IUserService {
     Integer updateStatus(Integer grade, String ids);
 
     Integer del();
+
+    /**
+     * 得到所有中奖者
+     * @return
+     */
+    List<User> getAll();
 }

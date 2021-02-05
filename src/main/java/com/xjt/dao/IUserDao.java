@@ -30,4 +30,6 @@ public interface IUserDao {
     List<User> getStatus(Integer status);
 
     void del();
+
+    List<User> getAll();
 }

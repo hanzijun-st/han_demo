@@ -69,7 +69,7 @@ li {
         type:1,
         tip:"加载中"
       })
-      query(0,function (data) {
+      query(status,function (data) {
         if(data && data.length){
           loading.hideLoading();
           var html = ''

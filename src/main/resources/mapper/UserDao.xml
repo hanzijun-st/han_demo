@@ -40,4 +40,14 @@
     <update id="del">
         update han_chouj set status=0
     </update>
+
+    <select id="getAll" resultType="User">
+        SELECT
+            id AS id,
+            per_num AS perNum,
+            per_name AS perName,
+            status
+        FROM han_chouj
+        where status !=0 ORDER BY status;
+    </select>
 </mapper>

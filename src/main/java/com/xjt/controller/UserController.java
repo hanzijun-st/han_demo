@@ -73,7 +73,9 @@ public class UserController {
         return userService.del();
     }
 
-    public static void main(String[] args) {
-        System.out.println("抽奖活动现在开始");
+    @RequestMapping(value = "/getAll",method = RequestMethod.GET)
+    @ResponseBody
+    public List<User> getAll(){
+        return userService.getAll();
     }
 }

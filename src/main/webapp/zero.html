@@ -85,12 +85,22 @@ li {
             }
           });
         }
-      })
-
+      });
     });
     $('.pos').on('click','.start',function(){
       luckDraw(dataList,grade,gradeNum);
-    })
+    });
+    /*document.onkeydown=function doKey(e){
+        var ev = e || window.event;//获取event对象
+        var obj = ev.target || ev.srcElement;//获取事件源
+        var t = obj.type || obj.getAttribute('type');//获取事件源类型
+        if(ev.keyCode == 32){
+	        $(".start").click();
+        }
+        if(ev.keyCode == 13){
+            return
+        }
+	}*/
   </script>
 </body>
 </html>
