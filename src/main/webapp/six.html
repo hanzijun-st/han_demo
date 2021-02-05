@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta charset="gbk">
+<meta charset="UTF-8">
 <title>六等奖</title>
 <link rel="stylesheet" href="css/common.css" />
 </head>
@@ -64,6 +64,7 @@ li {
     var status = 6;
     var grade = status;
     var gradeNum = 10;
+    var type = 2;
     $(function() {
       loading.showLoading({
         type:1,
@@ -83,6 +84,16 @@ li {
             dataList = data;
             if(dataList.length){
               $('.start').show();
+              type = 0;
+              $(document).keydown(function(event){
+                if(event.keyCode==13 && type == 0){
+                  type = 1;
+                  luckDraw(dataList,grade,gradeNum);
+                }else if(event.keyCode==32 && type == 1){
+                  type = 2;
+                  luckDrawStop(grade,gradeNum);
+                }
+              });
             }
           });
         }
@@ -90,6 +101,7 @@ li {
 
     });
     $('.pos').on('click','.start',function(){
+      type = 1;
       luckDraw(dataList,grade,gradeNum);
     })
   </script>

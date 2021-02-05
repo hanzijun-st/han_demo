@@ -78,9 +78,15 @@ const test_1 = [
   }
 ]
 function query(status,callBack){
+  // if(status == 0){
+  //   callBack(test);
+  // }else {
+  //   callBack([])
+  // }
+  // return
   $.ajax({
     type : "get",
-    url : "http://localhost:8090/start/getJiang/"+status,
+    url : "http://localhost:8090/mvcDemo/start/getJiang/"+status,
     dataType : "json",
     success : function(data) {
       if(callBack){
@@ -97,9 +103,11 @@ function query(status,callBack){
  * @param callBack
  */
 function getPrize(grade, num, callBack) {
+  // callBack(test_1);
+  // return
   $.ajax({
     type : "get",
-    url : "http://localhost:8090/start/get/"+grade+"/"+num,
+    url : "http://localhost:8090/mvcDemo/start/get/"+grade+"/"+num,
     dataType : "json",
     success : function(data) {
       if(callBack){
@@ -116,7 +124,7 @@ function reset(callBack) {
   })
   $.ajax({
     type : "get",
-    url : "http://localhost:8090/start/del",
+    url : "http://localhost:8090/mvcDemo/start/del",
     dataType : "json",
     success : function(data) {
       loading.hideLoading();
@@ -126,6 +134,8 @@ function reset(callBack) {
     }
   })
 }
+var timer = null;
+var list_1 = null;
 function luckDraw(list,grade,num) {
   loading.showLoading({
     type:1,
@@ -134,7 +144,7 @@ function luckDraw(list,grade,num) {
   getPrize(grade,num,function (data) {
     loading.hideLoading();
     $('.start').hide();
-    var list_1 = data;
+    list_1 = data;
     console.log(list_1);
     var html = '';
     for (var i = 0; i < list_1.length; i++) {
@@ -142,7 +152,7 @@ function luckDraw(list,grade,num) {
       list_1[i].i = Math.floor(Math.random()*(list.length-1-0+1)+0);
     }
     $('.pos ul').append(html);
-    var timer = setInterval(function () {
+    timer = setInterval(function () {
       for (var i = 0; i < list_1.length; i++) {
         var item = list[list_1[i].i];
         $('.li-'+i).html(item.perName+'('+item.perNum+')');
@@ -151,21 +161,31 @@ function luckDraw(list,grade,num) {
           list_1[i].i = 0
         }
       }
-    },40);// 名字轮换时间
-    setTimeout(function () {
-      clearInterval(timer);
-      for (var i = 0; i < list_1.length; i++) {
-        var item = list_1[i];
-        console.log(list_1);
-        console.log(item);
-        $('.li-'+i).html('');
-        $('.li-'+i).html(item.perName+'('+item.perNum+')');
-      }
-    },2000)// 结束
+    },40);
+    // setTimeout(function () {
+    //   clearInterval(timer);
+    //   for (var i = 0; i < list_1.length; i++) {
+    //     var item = list_1[i];
+    //     console.log(list_1);
+    //     console.log(item);
+    //     $('.li-'+i).html('');
+    //     $('.li-'+i).html(item.perName+'('+item.perNum+')');
+    //   }
+    // },5000)
   });
 
 }
-
+function luckDrawStop() {
+  clearInterval(timer);
+  timer = null;
+  for (var i = 0; i < list_1.length; i++) {
+    var item = list_1[i];
+    console.log(list_1);
+    console.log(item);
+    $('.li-'+i).html('');
+    $('.li-'+i).html(item.perName+'('+item.perNum+')');
+  }
+}
 const loading = {
   _loadItem:null,
   _anItem:null,

@@ -78,4 +78,8 @@ public class UserController {
     public List<User> getAll(){
         return userService.getAll();
     }
+
+    public static void main(String[] args) {
+
+    }
 }
