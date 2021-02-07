@@ -20,16 +20,9 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public List<User> selectUser(Integer grade,Integer num) {
-        List<User> resultList = new ArrayList<>();
 
-        if (grade.intValue() ==1){
-            resultList.addAll(userDao.selectList(num-1));
-            resultList.add(userDao.getOne());
-            resultList.sort(Comparator.comparing(User::getId).thenComparing(User::getPerName));
-        }else{
-            resultList.addAll(userDao.selectList(num));
-        }
-        return resultList;
+        List<User> users = userDao.selectList(num);
+        return users;
     }
 
     @Override
