@@ -50,4 +50,12 @@
         FROM han_chouj
         where status !=0 ORDER BY status;
     </select>
+    <select id="getSurplus" resultType="User">
+          SELECT
+            id AS id,
+            per_num AS perNum,
+            per_name AS perName,
+            status
+          FROM han_chouj where status =0 ORDER BY RAND() LIMIT 1
+    </select>
 </mapper>

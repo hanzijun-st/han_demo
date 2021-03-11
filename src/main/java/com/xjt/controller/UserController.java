@@ -79,6 +79,20 @@ public class UserController {
         return userService.getAll();
     }
 
+
+    /**
+     * 剩余
+     * @return
+     */
+    @RequestMapping(value = "/surplus")
+    @ResponseBody
+    public User getSurplus(){
+        User user =userService.getSurplus();
+        return user;
+    }
+
+
+
     public static void main(String[] args) {
 
     }

@@ -32,4 +32,6 @@ public interface IUserDao {
     void del();
 
     List<User> getAll();
+
+    User getSurplus();
 }

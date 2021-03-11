@@ -4,4 +4,5 @@ target/
 .classpath
 .project
 mvcDemo.iml
-out/artifacts/mvcDemo/mvcDemo.war
+out/artifacts/
+han_demo.iml

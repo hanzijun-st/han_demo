@@ -53,4 +53,11 @@ public class UserServiceImpl implements IUserService {
         List<User> allList = userDao.getAll();
         return allList;
     }
+
+    @Override
+    public User getSurplus() {
+        User user = userDao.getSurplus();
+        userDao.updateStatus(8,user.getId());
+        return user;
+    }
 }

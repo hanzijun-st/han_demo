@@ -31,4 +31,10 @@ public interface IUserService {
      * @return
      */
     List<User> getAll();
+
+    /**
+     * 获取一个未中奖的
+     * @return
+     */
+    User getSurplus();
 }
